@@ -28,10 +28,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    // Example of a call to a native method
-    TextView tv = (TextView) findViewById(R.id.sample_text);
-    tv.setText(stringFromJNI());
+        // Example of a call to a native method
+        TextView tv = (TextView) findViewById(R.id.sample_text);
+        tv.setText("Addition");
+        tv.append("\n");
+        int res = add(1,2);
+        tv.append(String.valueOf(res));
+        tv.append("\n");
+        tv.append("Multiplication");
+        int multi = multiply(9,6);
+        tv.append("\n");
+        tv.append(String.valueOf(multi));
+        tv.append("\n");
+        tv.append("Division");
+        int divisi = division(14,2);
+        tv.append("\n");
+        tv.append(String.valueOf(divisi));
+        tv.append("\n");
+        tv.append("Difference");
+        tv.append("\n");
+        int dif = diference(67,98);
+        tv.append(String.valueOf(dif));
+
+
     }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,10 +83,18 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
+    public native int add(int a,int b);
+
+    public native int multiply(int a,int b);
+
+    public native int division(int a,int b);
+
+    public native int diference(int a,int b);
+
+
 
     // Used to load the 'native-lib' library on application startup.
     static {
-        System.loadLibrary("native-lib");
+        System.loadLibrary("hello-android");
     }
 }
